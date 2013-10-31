@@ -3,7 +3,11 @@
 # ~~~~
 
 # Home page
-GET     /                                       Home.index
+GET        /                                       Home.index
+GET        /productos                              Productos.productos
+POST       /productos                              Productos.saveProducto
+PUT        /productos/{id}                         Productos.updateProducto
+DELETE     /productos/{id}                         Productos.deleteProducto
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
