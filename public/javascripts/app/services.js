@@ -8,19 +8,12 @@
 angular.module('myApp.services', []).
   value('version', '0.1');
 
-angular.module('myApp.myServices',[]).factory('testService', function()
+/*angular.module('myApp.myServices',['ngResource']).factory('testService', function()
 	{
-		var total = 0;
-
-		return{
-			setTotal: function(t)
-			{
-				total = t;
-			},
-			getTotal: function()
-			{
-				return total;
-			}
-		}
-	}
-);
+		return $resource('http://localhost\\:3000/productos/:id', {id:'@id'}, {
+         query: {method:'GET', params:{id:''}, isArray:true},
+          post: {method:'POST'},
+        update: {method:'PUT'},
+        remove: {method:'DELETE'}
+    });
+);*/

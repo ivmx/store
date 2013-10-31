@@ -4,10 +4,9 @@
 // Declare app level module which depends on filters, and services
 angular.module
 ('myApp', 
-	['ngResource',
-	 'myApp.filters', 
-	 'myApp.services', 
-	 'myApp.myServices', 
+	['myApp.filters', 
+	 //'myApp.services', 
+	 //'myApp.myServices', 
 	 'myApp.directives', 
 	 'myApp.controllers'
 
@@ -26,7 +25,7 @@ angular.module
 			    $routeProvider.when('/cart', 
 			    	{
 			    		templateUrl: 'public/partials/cart.html', 
-			    	  	 controller: 'MyCtrl2'
+			    	  	 controller: 'cartCtrl'
 			    	}
 		    	);
 			    $routeProvider.otherwise

@@ -1,90 +1,94 @@
-'use strict';
-
 /* Controllers */
+var app = angular.module('myApp.controllers', ['ngResource']);
 
-var Ctrl2 = function($scope){
-  $scope.total = 0;
-  $scope.productos = [];
+var cartCtrl = function($scope,$resource)
+{
+    $scope.total = 0;
+    $scope.misProductos = [];
 
-  var Producto = $resource('/productos/:id', {id:'@id'},
+    var Producto = $resource('/productos/:id', {id:'@id'},
                            {
                              update: { method : 'put', isArray : false},
                              delete: { method : 'delete', isArray : false } 
                            }
                     );
 
-  $scope.newProducto = new Producto();
 
-  $scope.agregar = function()
-                   {   
-                      $scope.newProducto.selected = false;
-                      $scope.newProducto.importe = $scope.newProducto.cantidad * 
-                                                   $scope.newProducto.precio;
-
-                      $scope.newProducto.id 
-                      ?
-                          $scope.newProducto.$update(function(){
-                                                             
-                          })
-                      :                     
-                      $scope.newProducto.$save(function(data)
-                      {
-                          $scope.productos.push($scope.newProducto);
-                          
-                      });
-
-                      $scope.totalizar();
-                      $scope.newProducto = Producto();  
-                   }
-
-  $scope.update = function(p)
-                {
-                  $scope.newProducto = p;
-                }
+    $scope.newProducto = new Producto();
 
 
-  $scope.borrar = function(p,i)
-                {
-                  p.$delete(function()
+    $scope.agregar = function()
+                     {   
+                        $scope.newProducto.selected = false;
+                        $scope.newProducto.importe = $scope.newProducto.cantidad * 
+                                                     $scope.newProducto.precio;
+
+                        $scope.newProducto.id 
+                        ?
+                            $scope.newProducto.$update(function(){
+                                                               
+                            })
+                        :                     
+                        $scope.newProducto.$save(function(data)
+                        {
+                            $scope.misProductos.push($scope.newProducto);
+                            
+                        });
+
+                        $scope.totalizar();
+                        $scope.newProducto = Producto();  
+                     }
+
+
+
+    $scope.update = function(p)
+                  {
+                    $scope.newProducto = p;
+                  }
+
+
+    $scope.borrar = function(p,i)
+                  {
+                    p.$delete(function()
+                              {
+                                $scope.misProductos.splice(i,1);
+                                $scope.totalizar();
+                              }
+                             );
+                    
+                  }
+
+    $scope.totalizar = function()
+                        {
+                            $scope.total = 0;
+
+                            angular.forEach($scope.misProductos, function(producto) 
                             {
-                              $scope.productos.splice(i,1);
-                              $scope.totalizar();
-                            }
-                           );
-                }
+                                $scope.total += producto.cantidad * producto.precio;
+                                producto.selected = (producto.cantidad == 0) ? true : false;
+                            });
+
+                        }
 
 
-  $scope.totalizar = function()
-                      {
-                          $scope.total = 0;
-
-                          angular.forEach($scope.productos, function(producto) 
-                          {
-                              $scope.total += producto.cantidad * producto.precio;
-                              producto.selected = (producto.cantidad == 0) ? true : false;
-                          });
-                      }
-
-
-  Producto.query(function(data)
-                {
-                  $scope.productos = data;
-                  console.log("Productos del server");
-                  console.log(data);
-                  $scope.totalizar();
-                });
+    Producto.query(function(data)
+                  {
+                    $scope.misProductos = data;
+                    console.log("Productos del server");
+                    console.log(data);
+                    $scope.totalizar();
+                  });
+    
 }
 
 
 
-angular.module('myApp.controllers', ['ngResource'])
-  .controller
+app.controller
   ('MyCtrl1',
     function($scope) 
     {
 
     }
-  )
-  .controller
-  ('MyCtrl2', Ctrl2);
-
+  );
+app.controller
+  ('cartCtrl',cartCtrl);
