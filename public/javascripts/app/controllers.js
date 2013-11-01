@@ -27,16 +27,16 @@ var cartCtrl = function($scope, $resource)
                 ?
                 $scope.newProducto.$update(function() {
                     $scope.newProducto = new Producto();
+                    $scope.totalizar();
                 })
                 :
                 $scope.newProducto.$save(function(data)
                 {
                     $scope.misProductos.push($scope.newProducto);
                     $scope.newProducto = new Producto();
+                    $scope.totalizar();
 
                 });
-
-        $scope.totalizar();
     };
 
 
