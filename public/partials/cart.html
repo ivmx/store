@@ -1,14 +1,42 @@
 <div class="row">
 
     <div class="span12">
-        <h1> Shopping Cart</h1><br />
+        <h1> Shopping Cart.</h1><br />
+
+        <div class="accordion" id="accordion3">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapse2">
+                        <h3>Alta de Productos</h3>
+                    </a>
+                </div>
+                <div id="collapse2" class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                        
+                        <div class="control-group">
+                            
+                            Producto <input type="text" ng-model="newProducto.nombre">
+
+                            Precio <input type="number" ng-model="newProducto.precio">
+                            
+                            Cantidad <input type="number" ng-model="newProducto.cantidad">
+                            
+                        </div>   
+                        <button ng-click="agregar()" class="btn btn-primary"> Guardar </button>
+                    </div>
+                
+                </div>
+            </div>  
+        </div>
+
 
 
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Eliminar</th>
-                    <th>Actualizar</th>
+                    <th>Editar</th>
                     <th>Nombre Producto</th>                                
                     <th>Cantidad</th>
                     <th>Precio Unitario</th>
@@ -22,7 +50,7 @@
                         <button class="btn btn-danger" ng-click="borrar(miProducto, $index)">Eliminar</button>
                     </td>
                     <td>
-                        <button class="btn btn-warning" ng-click="update(miProducto)">Actualizar</button>
+                        <button class="btn btn-info" ng-click="update(miProducto)">Editar</button>
                     </td>
                     <td>{{miProducto.nombre}}</td>
                     <td>{{miProducto.cantidad}}</td>
@@ -80,36 +108,6 @@
                 </div>
 
             </div>
-
-
-                <div class="accordion" id="accordion3">
-                    <div class="accordion-group">
-                        <div class="accordion-heading">
-
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapse2">
-                                <h3>Alta de Productos</h3>
-                            </a>
-                        </div>
-                        <div id="collapse2" class="accordion-body collapse in">
-                            <div class="accordion-inner">
-                                
-                                <div class="control-group">
-                                    
-                                    Producto <input type="text" ng-model="newProducto.nombre">
-
-                                    Precio <input type="number" ng-model="newProducto.precio">
-                                    
-                                    Cantidad <input type="number" ng-model="newProducto.cantidad">
-                                    
-                                </div>   
-                                <button ng-click="agregar()" class="btn btn-primary"> Guardar </button>
-                            </div>
-                        
-                        </div>
-                    </div>
-
-                    
-                </div>
 
             </fieldset>
         </form>
