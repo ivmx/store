@@ -1,6 +1,6 @@
-14 nov 2013 09:18:37,894 INFO  ~ Starting /Users/luis-Imac/Proyectos/Store
-14 nov 2013 09:18:37,897 INFO  ~ Module secure is available (/Library/Java/Play/modules/secure)
-14 nov 2013 09:18:38,433 WARN  ~ You're running Play! in DEV mode
-14 nov 2013 09:18:38,501 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
-14 nov 2013 09:18:48,460 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0
-14 nov 2013 09:18:49,044 INFO  ~ Application 'Store' is now started !
+14 nov 2013 11:57:43,204 INFO  ~ Starting /Users/luis-Imac/Proyectos/Store
+14 nov 2013 11:57:43,207 INFO  ~ Module secure is available (/Library/Java/Play/modules/secure)
+14 nov 2013 11:57:43,749 WARN  ~ You're running Play! in DEV mode
+14 nov 2013 11:57:43,818 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+14 nov 2013 11:57:49,122 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0
+14 nov 2013 11:57:49,788 INFO  ~ Application 'Store' is now started !

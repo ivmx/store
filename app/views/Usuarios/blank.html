@@ -1,0 +1,46 @@
+<div class="container">
+     #{ifErrors}
+        <div class="alert alert-warning">
+            <p>Debes de Completar correctamente todos los Campos</p>
+        </div>
+        #{/ifErrors}
+        #{if flash.success}
+        <div class="alert alert-success">
+            &{flash.success}
+        </div>
+        #{/if}
+    
+    #{extends 'main.html' /}
+
+    #{form @Usuarios.create(), id:'creationForm', class:'form-signin'}
+        <h1>Registro:</h1>
+    <p>
+        <label>Nombre:</label>
+        <input type="text" id="user_name" name="usuario.nombre" value="${usuario?.nombre}" class="${errors.forKey('usuario.nombre') ? 'has_error' : ''}">
+        <span class="error">${errors.forKey('user.name')}</span>
+    </p>
+
+    <p>
+        <label>Usuario:</label>
+        <input type="text" id="user_name" name="usuario.usuario" value="${usuario?.usuario}" class="${errors.forKey('usuario.usuario') ? 'has_error' : ''}">
+        <span class="error">${errors.forKey('user.usuario')}</span>
+    </p>
+
+
+    <p>
+        <label>Password:</label>
+        <input type="password" id="user_name" name="usuario.password" value="${usuario?.password}" class="${errors.forKey('usuario.password') ? 'has_error' : ''}">
+        <span class="error">${errors.forKey('user.password')}</span>
+    </p>
+    
+    <p>
+        <label>Email:</label>
+        <input type="text" id="user_name" name="usuario.email" value="${usuario?.email}" class="${errors.forKey('usuario.email') ? 'has_error' : ''}">
+        <span class="error">${errors.forKey('user.email')}</span>
+    </p>
+    
+    <p>
+        <input class="btn btn-lg btn-primary btn-block" type="submit" id="signin" value="Registrarce" />
+    </p>
+    #{/form}
+</div>
