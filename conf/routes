@@ -3,6 +3,8 @@
 # ~~~~
 
 # Home page
+# Import Secure routes
+*          /                                       module:secure
 GET        /                                       Home.index
 GET        /productos                              Productos.productos
 POST       /productos                              Productos.saveProducto
